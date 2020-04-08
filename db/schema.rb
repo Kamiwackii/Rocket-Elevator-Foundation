@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_27_185758) do
+ActiveRecord::Schema.define(version: 2020_04_07_210313) do
 
   create_table "active_admin_comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "namespace"
@@ -133,6 +133,27 @@ ActiveRecord::Schema.define(version: 2020_03_27_185758) do
     t.index ["reset_password_token"], name: "index_employees_on_reset_password_token", unique: true
   end
 
+  create_table "interventions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "author"
+    t.date "date_started"
+    t.date "date_ended"
+    t.string "result", default: "Incomplete"
+    t.string "report"
+    t.string "status", default: "Pending"
+    t.bigint "employee_id"
+    t.bigint "customer_id"
+    t.bigint "battery_id"
+    t.bigint "column_id"
+    t.bigint "elevator_id"
+    t.bigint "building_id"
+    t.index ["battery_id"], name: "index_interventions_on_battery_id"
+    t.index ["building_id"], name: "index_interventions_on_building_id"
+    t.index ["column_id"], name: "index_interventions_on_column_id"
+    t.index ["customer_id"], name: "index_interventions_on_customer_id"
+    t.index ["elevator_id"], name: "index_interventions_on_elevator_id"
+    t.index ["employee_id"], name: "index_interventions_on_employee_id"
+  end
+
   create_table "leads", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "full_name", null: false
     t.string "company_name"
@@ -142,9 +163,11 @@ ActiveRecord::Schema.define(version: 2020_03_27_185758) do
     t.string "project_desc"
     t.string "department", null: false
     t.string "message", null: false
-    t.binary "attached_file", limit: 16777215
+    t.binary "attached_file"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "customer_id"
+    t.index ["customer_id"], name: "index_leads_on_customer_id"
   end
 
   create_table "quotes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -194,6 +217,13 @@ ActiveRecord::Schema.define(version: 2020_03_27_185758) do
   add_foreign_key "columns", "batteries"
   add_foreign_key "customers", "addresses"
   add_foreign_key "elevators", "columns"
+  add_foreign_key "interventions", "batteries"
+  add_foreign_key "interventions", "buildings"
+  add_foreign_key "interventions", "columns"
+  add_foreign_key "interventions", "customers"
+  add_foreign_key "interventions", "elevators"
+  add_foreign_key "interventions", "employees"
+  add_foreign_key "leads", "customers"
   add_foreign_key "users", "customers"
   add_foreign_key "users", "employees"
 end

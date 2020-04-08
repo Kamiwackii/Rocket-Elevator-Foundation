@@ -10,10 +10,10 @@ class QuoteController < ApplicationController
     @quote = Quote.new(quote_params)
     #render json: @quote #test when submit button form
     if @quote.save
-      flash[:notice] = "add new quete successfull "
+      flash[:notice] = "add new quote successful "
       redirect_to :index
     else
-      flash[:notice] = "add new quete not successfull "
+      flash[:notice] = "add new quote not successful "
       redirect_to action:"new"
     end
   end

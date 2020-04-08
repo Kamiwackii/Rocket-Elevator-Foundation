@@ -1,0 +1,5 @@
+<%= form_with model: @intervention, url:{action:"create"} do |f| %>
+        <%= render partial: "interventions/index", :locals =>{:f => f}  %>
+                <%= f.submit("Submit", :class => "btn btn-primary btn-lg btn-block fs-15")  %>
+        <%= render partial: "interventions/index_end", :locals =>{:f => f}  %>
+<% end %>

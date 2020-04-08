@@ -29,9 +29,6 @@ class LeadsController < ApplicationController
     end
     #render json: @lead #test when submit button form
     if @lead.save
-      flash[:notice] = "We received your request! "
-      redirect_to :index
-
       data = JSON.parse(%Q[{
         "personalizations": [
           {
@@ -54,6 +51,8 @@ class LeadsController < ApplicationController
       }])
       sg = SendGrid::API.new(api_key: ENV["SENDGRID_API"])
       response = sg.client.mail._("send").post(request_body: data)
+      flash[:notice] = "We received your request! "
+      redirect_to :index
     else
       flash[:notice] = "Request not succesfull."
       redirect_to action:"new"

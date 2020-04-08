@@ -14,7 +14,6 @@
 
 //= require jquery
 //= require jquery_ujs
-//= require rails-ujs
 //= require activestorage
 //= require scripts
 //= require demo.revolution_slider
