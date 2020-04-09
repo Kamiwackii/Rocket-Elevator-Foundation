@@ -134,7 +134,7 @@ ActiveRecord::Schema.define(version: 2020_04_07_210313) do
   end
 
   create_table "interventions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "author"
+    t.bigint "author_id"
     t.date "date_started"
     t.date "date_ended"
     t.string "result", default: "Incomplete"
@@ -146,6 +146,7 @@ ActiveRecord::Schema.define(version: 2020_04_07_210313) do
     t.bigint "column_id"
     t.bigint "elevator_id"
     t.bigint "building_id"
+    t.index ["author_id"], name: "index_interventions_on_author_id"
     t.index ["battery_id"], name: "index_interventions_on_battery_id"
     t.index ["building_id"], name: "index_interventions_on_building_id"
     t.index ["column_id"], name: "index_interventions_on_column_id"
@@ -223,6 +224,7 @@ ActiveRecord::Schema.define(version: 2020_04_07_210313) do
   add_foreign_key "interventions", "customers"
   add_foreign_key "interventions", "elevators"
   add_foreign_key "interventions", "employees"
+  add_foreign_key "interventions", "employees", column: "author_id"
   add_foreign_key "leads", "customers"
   add_foreign_key "users", "customers"
   add_foreign_key "users", "employees"

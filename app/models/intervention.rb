@@ -1,9 +1,9 @@
 class Intervention < ApplicationRecord
-    # belongs_to :author, class_name: "Employee"
+    belongs_to :author, class_name: "Employee"
     belongs_to :employee, optional: true
     belongs_to :customer
     belongs_to :building
-    belongs_to :battery, optional: true
+    belongs_to :battery
     belongs_to :column, optional: true
     belongs_to :elevator, optional: true
 
@@ -15,23 +15,36 @@ class Intervention < ApplicationRecord
             config.username = ENV['ZENDESK_USERNAME']
             config.token = ENV['ZENDESK_TOKEN']
         end
+
+        text = "The contact company #{self.customer.company_name} has a problem in building ##{self.building_id}.\n"
+
+        if (self.elevator_id != nil)
+            text.concat("The problem is in: elevator ##{self.elevator_id}, which is in column ##{self.column_id}, in battery ##{self.battery_id}.\n")
+        elsif (self.column_id != nil)
+            text.concat("The problem is in: column ##{self.column_id}, which is in battery ##{self.battery_id}.\n")
+        else
+            text.concat("The problem is in: battery ##{self.battery_id}.\n")
+        end
+
+        if (self.employee_id != nil)
+            text.concat("#{self.employee.first_name} #{self.employee.last_name} is assigned to this intervention.\n")
+        else
+            text.concat("no employees is currently assigned to this intervention.\n")
+        end
+
+        text.concat("\nDescription:\n#{self.report}")
+        puts text
         ZendeskAPI::Ticket.create!(client, 
-            :subject => "#{Employee.find(self.author).first_name} #{Employee.find(self.author).last_name}", 
+            :subject => "#{self.author.first_name} #{self.author.last_name}", 
             :comment => { 
-                :value => "The contact company #{Customer.find(self.customer_id).company_name} 
-                    has a problem in building ##{self.building_id}
-                    #{self.department} has a project named #{self.project_name} which would require contribution from Rocket Elevators.
-                    \n\n
-                    Project Description
-                    #{self.project_desc}\n\n
-                    Attached Message: #{self.message}"
+                :value => text
             }, 
             :requester => { 
-                "name": Employee.find(self.author).first_name
-                "email": Employee.find(self.author).email 
+                "name": self.author.first_name,
+                "email": "testemail@hotmail.com" 
             },
             :priority => "normal",
-            :type => "question"
+            :type => "problem"
         )
     end
 end

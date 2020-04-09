@@ -48,7 +48,7 @@ class InterventionsController < InheritedResources::Base
   private
 
   def intervention_params
-    params[:intervention][:author] = current_employee.id
+    params[:intervention][:author_id] = current_employee.id
     params[:intervention][:date_started] = nil
     params[:intervention][:date_ended] = nil
     if params[:intervention][:column_id] == "nulltest"
@@ -62,7 +62,7 @@ class InterventionsController < InheritedResources::Base
     end
     # params[:intervention][:result] = nil
     # params[:intervention][:status] = nil
-    params.require(:intervention).permit(:customer_id, :employee_id, :building_id, :battery_id, :column_id, :elevator_id, :report, :author, :date_started, :date_ended, :result, :status)
+    params.require(:intervention).permit(:customer_id, :employee_id, :building_id, :battery_id, :column_id, :elevator_id, :report, :author_id, :date_started, :date_ended, :result, :status)
   end
 
 end
