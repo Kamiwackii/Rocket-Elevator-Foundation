@@ -29,28 +29,28 @@ class LeadsController < ApplicationController
     end
     #render json: @lead #test when submit button form
     if @lead.save
-      data = JSON.parse(%Q[{
-        "personalizations": [
-          {
-            "to": [
-              {
-                "email": "#{@lead.email}"
-              }
-            ],
-            "dynamic_template_data":{
-              "full_name":"#{@lead.full_name}",
-              "project_name":"#{@lead.project_name}"
-            },
-            "subject": "Greetings from Team Rocket!"
-          }
-        ],
-        "from": {
-          "email": "Rocket@example.com"
-        },
-        "template_id":"d-4bffcf74a77e45ec9f8dd8006578c217"
-      }])
-      sg = SendGrid::API.new(api_key: ENV["SENDGRID_API"])
-      response = sg.client.mail._("send").post(request_body: data)
+      # data = JSON.parse(%Q[{
+      #   "personalizations": [
+      #     {
+      #       "to": [
+      #         {
+      #           "email": "#{@lead.email}"
+      #         }
+      #       ],
+      #       "dynamic_template_data":{
+      #         "full_name":"#{@lead.full_name}",
+      #         "project_name":"#{@lead.project_name}"
+      #       },
+      #       "subject": "Greetings from Team Rocket!"
+      #     }
+      #   ],
+      #   "from": {
+      #     "email": "Rocket@example.com"
+      #   },
+      #   "template_id":"d-4bffcf74a77e45ec9f8dd8006578c217"
+      # }])
+      # sg = SendGrid::API.new(api_key: ENV["SENDGRID_API"])
+      # response = sg.client.mail._("send").post(request_body: data)
       flash[:notice] = "We received your request! "
       redirect_to :index
     else
