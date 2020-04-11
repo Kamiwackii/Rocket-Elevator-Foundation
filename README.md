@@ -10,6 +10,25 @@
   - Rest API, consult this repo: https://github.com/Kamiwackii/Rocket-Elevator-Rest-Api
 
   - MVC for intervention, including javascript for intervention form 
+  
+## Back Office Admin Logins 
+
+  - admin@example.com , password  
+  
+  - test@test , 123123  
+  
+  - Mathieu Houde | coach | mathieu.houde@codeboxx.biz | password: 123456  
+  
+  - Patrick Thibault | coach | tiboclan@gmail.com | password: 123456  
+  
+  - Philippe Motillon | coach | philippe.motillon@keyrus.ca | password: 123456  
+  
+  - Khalid Kjado | coach | kdjado@gmail.com | password: 123456  
+  
+  - Antoine Deblonde | coach | antoine.deblonde@keyrus.ca | password: 123456  
+  
+  - Ibrahim Mahamane | coach | imahamaneissa@gmail.com | password: 123456  
+
 
 
   ## SPECIAL INSTRUCTIONS FOR BEGINNERS WHO WANT TO RUN THIS APP
