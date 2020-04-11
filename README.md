@@ -1,33 +1,24 @@
-# ROCKET ELEVATORS INFORMATION SYSTEM API'S
+# ROCKET ELEVATORS FOUNDATION
 
-  Goal for the week : Implement different Api keys into our website Rocket Elevator.
+  Goal for the week : Create Intervention table, implement ZenDesk and a form for it
 
-###### New Update Week 7 | Odyssey :   March 27rd 2020 ######
+## Implementations 
+  - migrations, create the intervention table with the correct attributes and foreign keys
 
+  - Zendesk, create a problem type ticket when an intervention is made
 
-## API Implemented 
-  - Google API - Team Leader - Alberbecois
+  - Rest API, consult this repo: https://github.com/Kamiwackii/Rocket-Elevator-Rest-Api
 
-  - Twilio API - Collaborator - Amuriana
-
-  - Slack API - Collaborator - Kamiwackii
-
-  - Dropbox API - Collaborator - BenLand24
-
-  - Sendgrid API - Collaborator - Cyborg00
-
-  - IBM Watson API - Collaborator - Alberbecois
-
-  - ZenDesk API - Collaborator - Kamiwackii
+  - MVC for intervention, including javascript for intervention form 
 
 
-  ## SPECIAL INSTRUCTIONS FOR BEGINNERS WHO WANT TO RUN THIS PROGRAM WITH PERSONAL API's
+  ## SPECIAL INSTRUCTIONS FOR BEGINNERS WHO WANT TO RUN THIS APP
 
   1 - Clone the repository.
 
-  2 - Create the file named " application.yml " inside config.
+  2 - Create a file named " application.yml " inside the config folder.
 
-  3 - Once you will have your own key's you can add then inside the "your_api_key" inside the following code.
+  3 - Once you will have your own api key's you can add then inside the "your_api_key" inside the following code.
 
 
         # Add configuration values here, as shown below.
@@ -58,18 +49,6 @@
   4 - After implementing your key's, generate a file named " database.yml " and put your own database information inside "your_info"
 
   - The code will look like that : 
-
-        # MySQL. Versions 5.1.10 and up are supported.
-        #
-        # Install the MySQL driver
-        #   gem install mysql2
-        #
-        # Ensure the MySQL gem is defined in your Gemfile
-        #   gem 'mysql2'
-        #
-        # And be sure to use new-style password hashing:
-        #   https://dev.mysql.com/doc/refman/5.7/en/password-hashing.html
-        #
         default: &default
           adapter: mysql2
           encoding: utf8
@@ -81,33 +60,10 @@
         development:
           <<: *default
           database: "your_info"
-
-        # Warning: The database defined as "test" will be erased and
-        # re-generated from your development database when you run "rake".
-        # Do not set this db to the same as development or production.
         test:
           <<: *default
           database: "your_info"
 
-        # As with config/secrets.yml, you never want to store sensitive information,
-        # like your database password, in your source code. If your source code is
-        # ever seen by anyone, they now have access to your database.
-        #
-        # Instead, provide the password as a unix environment variable when you boot
-        # the app. Read http://guides.rubyonrails.org/configuring.html#configuring-a-database
-        # for a full rundown on how to provide these environment variables in a
-        # production deployment.
-        #
-        # On Heroku and other platform providers, you may have a full connection URL
-        # available as an environment variable. For example:
-        #
-        #   DATABASE_URL="mysql2://myuser:mypass@localhost/somedatabase"
-        #
-        # You can use this database configuration with:
-        #
-        #   production:
-        #     url: <%= ENV['DATABASE_URL'] %>
-        #
         production:
           <<: *default
           database: "your_info"
