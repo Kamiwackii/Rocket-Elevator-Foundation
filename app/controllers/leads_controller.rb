@@ -14,21 +14,24 @@ class LeadsController < ApplicationController
   
   def create
     @lead = Lead.new(lead_params)
-    puts "CREATING"
-    p = params["lead"].permit!
-    puts "PARAMS = #{p}"
-    file_attachment = p["attached_file"]
-    # file_attachment = params["attached_file"]
-    if file_attachment != nil
-      # p["attached_file"] = file_attachment.read
-      p["original_file_name"] = file_attachment.original_filename
-      puts "WRITING UPLOAD"
-      File.open(Rails.root.join('public', file_attachment.original_filename), 'wb') do |file|
-        file.write(file_attachment.read)
-      end
-    end
+    # puts "CREATING"
+    # p = params["lead"].permit!
+    # puts "PARAMS = #{p}"
+    # file_attachment = p["attached_file"]
+    # if file_attachment != nil
+    #   p["original_file_name"] = file_attachment.original_filename
+    #   puts "WRITING UPLOAD"
+    #   File.open(Rails.root.join('public', 'files', file_attachment.original_filename), 'wb') do |file|
+    #     file.write(file_attachment.read)
+    #   end
+    # end
+    # @lead.attached_file = params[:lead][:attached_file].tempfile.to_io
     #render json: @lead #test when submit button form
+
+    
     if @lead.save
+      puts params[:lead][:attached_file]
+      puts params[:lead][:attached_file].original_filename
       # data = JSON.parse(%Q[{
       #   "personalizations": [
       #     {
@@ -52,7 +55,7 @@ class LeadsController < ApplicationController
       # sg = SendGrid::API.new(api_key: ENV["SENDGRID_API"])
       # response = sg.client.mail._("send").post(request_body: data)
       flash[:notice] = "We received your request! "
-      redirect_to :index
+      redirect_to :root
     else
       flash[:notice] = "Request not succesfull."
       redirect_to action:"new"
@@ -67,6 +70,11 @@ class LeadsController < ApplicationController
   private
   def lead_params
     #params.require(name model)
-    params.require(:lead).permit(:full_name,:company_name,:email,:phone,:project_name,:project_desc,:department,:message,:attached_file)
+    uploaded_file = params[:lead][:attached_file]
+    File.open(Rails.root.join('public', 'files', uploaded_file.original_filename), 'wb') do |file|
+      file.write(uploaded_file.read)
+      uploaded_file.rewind
+    end 
+    params.require(:lead).permit!
   end
 end

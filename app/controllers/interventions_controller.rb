@@ -10,7 +10,7 @@ class InterventionsController < InheritedResources::Base
     
     if @intervention.save
       flash[:notice] = "add new intervention successful"
-      redirect_to :index
+      redirect_to :root
     else
       flash[:notice] = "add new intervention not successful"
       redirect_to action:"new"

@@ -15,4 +15,3 @@ ActiveAdmin.register Lead do
         actions
     end
 end
-  

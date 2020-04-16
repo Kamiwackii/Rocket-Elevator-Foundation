@@ -1,4 +1,5 @@
 class Lead < ApplicationRecord
+    has_one_attached :attached_file
     
     # after_save :create_lead_ticket
 

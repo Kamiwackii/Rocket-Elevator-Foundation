@@ -11,7 +11,7 @@ class QuoteController < ApplicationController
     #render json: @quote #test when submit button form
     if @quote.save
       flash[:notice] = "add new quote successful "
-      redirect_to :index
+      redirect_to :root
     else
       flash[:notice] = "add new quote not successful "
       redirect_to action:"new"
