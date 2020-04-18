@@ -104,6 +104,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'sendgrid-ruby'
 gem 'json', '~> 1.8', '>= 1.8.3'
 gem 'twilio-ruby'
-gem 'phonelib'
 gem 'ibm_watson'
 gem 'dropbox_api'

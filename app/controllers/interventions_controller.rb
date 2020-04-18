@@ -12,6 +12,7 @@ class InterventionsController < InheritedResources::Base
       flash[:notice] = "add new intervention successful"
       redirect_to :root
     else
+      logger.error "#{params.permit!}"
       flash[:notice] = "add new intervention not successful"
       redirect_to action:"new"
     end
