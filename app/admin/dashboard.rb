@@ -14,6 +14,9 @@ ActiveAdmin.register_page "Dashboard" do
     panel "google map" do
       render 'map'
     end
+    panel "youtube video" do
+      render 'video'
+    end
     panel "contact requests" do
       column_chart Lead.group_by_month(:created_at).count
     end

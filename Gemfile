@@ -106,3 +106,5 @@ gem 'json', '~> 1.8', '>= 1.8.3'
 gem 'twilio-ruby'
 gem 'ibm_watson'
 gem 'dropbox_api'
+
+gem 'rspec-rails'
