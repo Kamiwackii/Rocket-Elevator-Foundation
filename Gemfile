@@ -108,3 +108,4 @@ gem 'ibm_watson'
 gem 'dropbox_api'
 
 gem 'rspec-rails'
+gem 'webmock'

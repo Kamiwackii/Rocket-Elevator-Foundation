@@ -3,23 +3,23 @@ require 'json'
 
 module ElevatorMedia
     class Streamer
-        @array_size = 50
+        @array_size = 50 #maximum is 50
 
         def self.getContent
-            content = self.pickVideoFromList
-            content = self.wrapIFrame(content)
+            # content = self.pickVideoFromList
+            content = self.wrapIFrame(self.pickVideoFromList)
             return "<div>"+content+"</div>"
         end
 
-        def self.testingRspec
-            return "hello world"
-        end
+        # def self.testingRspec
+        #     return "hello world"
+        # end
 
         private #private methods
 
-        def self.testPrivateMethod(input)
-            return input
-        end
+        # def self.testPrivateMethod(input)
+        #     return input
+        # end
 
         def self.wrapIFrame(id)
             # iframe_string = "<iframe src="
