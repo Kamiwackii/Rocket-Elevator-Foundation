@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   get 'leads' => 'leads#new'
   get 'interv' => 'interventions#new'
   get 'welcome' => 'watson#welcome'
+  get 'fun' => 'pages#elevatormedia'
 
   get 'get_building_by_customer/:customer_id', to: 'interventions#get_building_by_customer'  
   get 'get_battery_by_building/:building_id', to: 'interventions#get_battery_by_building'

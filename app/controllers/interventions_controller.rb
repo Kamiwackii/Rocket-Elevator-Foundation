@@ -12,7 +12,7 @@ class InterventionsController < InheritedResources::Base
       flash[:notice] = "add new intervention successful"
       redirect_to :root
     else
-      logger.error "#{params.permit!}"
+      logger.error "failed to save intervention, missing params"
       flash[:notice] = "add new intervention not successful"
       redirect_to action:"new"
     end
@@ -47,6 +47,10 @@ class InterventionsController < InheritedResources::Base
   end 
 
   private
+
+  def log_error
+    logger.error "failed to save intervention, missing params"
+  end
 
   def intervention_params
     params[:intervention][:author_id] = current_employee.id

@@ -1,8 +1,8 @@
 class Quote < ActiveRecord::Base
 
-    # after_save :create_quote_ticket
+    after_save :create_quote_ticket
 
-    # def create_quote_ticket
+    def create_quote_ticket
     #     client = ZendeskAPI::Client.new do |config|
     #         config.url = ENV['ZENDESK_URL']
     #         config.username = ENV['ZENDESK_USERNAME']
@@ -24,5 +24,5 @@ class Quote < ActiveRecord::Base
     #         :priority => "normal",
     #         :type => "task"
     #         )
-    # end
+    end
 end

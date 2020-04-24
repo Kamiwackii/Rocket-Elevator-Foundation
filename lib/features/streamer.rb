@@ -27,7 +27,7 @@ module ElevatorMedia
             # iframe_string.concat(">")
             # iframe_string.concat("</iframe>")
             # return iframe_string
-            return "<iframe src='https://www.youtube.com/embed/#{id}'></iframe>"
+            return "<iframe src='https://www.youtube.com/embed/#{id}' height='720' width='1280' allowfullscreen></iframe>"
         end
 
         def self.getYtVideoList

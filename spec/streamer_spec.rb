@@ -12,7 +12,7 @@ RSpec.describe ElevatorMedia::Streamer do
 
     describe "getContent" do
         context 'test for returning valid html' do
-            it 'returns a string that starts and end with a div' do
+            it 'returns a string that starts and end with a div tag' do
                 # described_class.stub(:randomNumberGenerator).and_return(5)
                 # expect(described_class).to receive(:wrapIFrame).with(described_class.pickVideoFromList(5)).and_return("<iframe src='https://www.youtube.com/embed/O3RjIKvOL5c'></iframe>")
                 expect(described_class.getContent.start_with?("<div>")).to be(true)
@@ -32,14 +32,14 @@ RSpec.describe ElevatorMedia::Streamer do
     describe "wrapIFrame" do
         context 'test for wrapping the input with an iframe' do
             it 'returns a valid iframe' do
-                expect(described_class.wrapIFrame("Abc23456789")).to eq("<iframe src='https://www.youtube.com/embed/Abc23456789'></iframe>")
+                expect(described_class.wrapIFrame("Abc23456789")).to eq("<iframe src='https://www.youtube.com/embed/Abc23456789' height='720' width='1280' allowfullscreen></iframe>")
             end
         end
     end
 
     describe "getYtVideoList" do
         context 'test the youtube api for search ' do
-            it 'returns a list as a string' do
+            it 'returns a JSON object as a string' do
 
                 expect(described_class.getYtVideoList).to be_an_instance_of(String)
             end

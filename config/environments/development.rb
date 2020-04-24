@@ -56,8 +56,8 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
-  logger           = ActiveSupport::Logger.new(STDOUT)
-  config.log_level = :error
+  # logger           = ActiveSupport::Logger.new(STDOUT)
+  # config.log_level = :error
   # logger.formatter = config.log_formatter
   # config.logger = ActiveSupport::TaggedLogging.new(logger)
 
