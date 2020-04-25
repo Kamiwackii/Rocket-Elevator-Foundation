@@ -1,6 +1,18 @@
 # ROCKET ELEVATORS FOUNDATION
 
   Goal for the week : Create Intervention table, implement ZenDesk and a form for it
+  
+## Week 11 - TDD (update)
+  
+  - integrated 3 tests for existing code under ./spec/
+
+  - applied TDD to implement a new feature using youtube's search api from google
+  
+  - the feature is located in ./lib/features/streamer.rb and the tests in ./spec/streamer_spec.rb
+  
+  - run "bundle exec rspec --format documentation" to run the tests
+  
+  - also implemented the same feature in python at https://github.com/Kamiwackii/Python_TDD_Example
 
 ## Implementations 
   - migrations, create the intervention table with the correct attributes and foreign keys
@@ -12,22 +24,18 @@
   - MVC for intervention, including javascript for intervention form 
   
 ## Back Office Admin Logins 
-
-  - admin@example.com , password  
   
-  - test@test , 123123  
+  - Mathieu Houde | coach | mathieu.houde@codeboxx.biz | password: Aa123123123!  
   
-  - Mathieu Houde | coach | mathieu.houde@codeboxx.biz | password: 123456  
+  - Patrick Thibault | coach | tiboclan@gmail.com | password: Aa123123123!  
   
-  - Patrick Thibault | coach | tiboclan@gmail.com | password: 123456  
+  - Philippe Motillon | coach | philippe.motillon@keyrus.ca | password: Aa123123123!  
   
-  - Philippe Motillon | coach | philippe.motillon@keyrus.ca | password: 123456  
+  - Khalid Kjado | coach | kdjado@gmail.com | password: Aa123123123!  
   
-  - Khalid Kjado | coach | kdjado@gmail.com | password: 123456  
+  - Antoine Deblonde | coach | antoine.deblonde@keyrus.ca | password: Aa123123123!  
   
-  - Antoine Deblonde | coach | antoine.deblonde@keyrus.ca | password: 123456  
-  
-  - Ibrahim Mahamane | coach | imahamaneissa@gmail.com | password: 123456  
+  - Ibrahim Mahamane | coach | imahamaneissa@gmail.com | password: Aa123123123!  
 
 
 
