@@ -13,6 +13,8 @@
   - run "bundle exec rspec --format documentation" to run the tests
   
   - also implemented the same feature in python at https://github.com/Kamiwackii/Python_TDD_Example
+  
+  - visit https://jackielai.xyz/fun to view the feature
 
 ## Implementations 
   - migrations, create the intervention table with the correct attributes and foreign keys
