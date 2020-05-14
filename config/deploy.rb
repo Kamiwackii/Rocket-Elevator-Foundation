@@ -41,6 +41,20 @@ set :repo_url, "https://github.com/Kamiwackii/Rocket-Elevator-Foundation.git"
 # set :ssh_options, verify_host_key: :secure
 
 before "deploy:assets:precompile", "deploy:yarn_install"
+
+namespace :deploy do
+  desc 'Config bundler'
+
+  task :config_bundler do
+    on roles(/.*/) do
+      execute :bundle, 'config', '--local deployment', true
+      execute :bundle, 'config', '--local', 'without', "development:test"
+      execute :bundle , 'config', '--local', 'path', shared_path.join('bundle')
+    end
+  end
+end
+
+before 'bundler:install', 'deploy:config_bundler'
  
 namespace :deploy do
  desc 'Run rake yarn:install'
