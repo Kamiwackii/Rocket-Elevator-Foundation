@@ -1,5 +1,5 @@
 # config valid for current version and patch releases of Capistrano
-lock "~> 3.12.0"
+lock "~> 3.14.0"
 
 before 'deploy', 'rvm1:install:ruby'
 set :rvm_map_bins, [ 'rake', 'gem', 'bundle', 'ruby', 'puma', 'pumactl' ]
@@ -42,19 +42,6 @@ set :repo_url, "https://github.com/Kamiwackii/Rocket-Elevator-Foundation.git"
 
 before "deploy:assets:precompile", "deploy:yarn_install"
 
-namespace :deploy do
-  desc 'Config bundler'
-
-  task :config_bundler do
-    on roles(/.*/) do
-      execute :bundle, 'config', '--local deployment', true
-      execute :bundle, 'config', '--local', 'without', "development:test"
-      execute :bundle , 'config', '--local', 'path', shared_path.join('bundle')
-    end
-  end
-end
-
-before 'bundler:install', 'deploy:config_bundler'
  
 namespace :deploy do
  desc 'Run rake yarn:install'
